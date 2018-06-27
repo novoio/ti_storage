@@ -1,0 +1,100 @@
+<nav id="breadcrumbs" class="heading_font">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= link_to '< Back to Search', search_path %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="checkout_new_page">
+  <div class="container-fluid">
+    <section class="step_navigation">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Step 2: Confirm Your Reservation</h2>
+        </div>
+
+        <div class="col-md-6 steps">
+          <div class="titles">
+            <h5>Step 1</h5>
+            <h5 class: 'active'>Step 2</h5>
+            <h5>Step 3</h5>
+          </div>
+
+          <%= image_tag 'checkout/step_2_active.png' %>
+        </div>
+      </div>
+    </section>
+
+    <div class="sidebar_and_steps">
+      <%= render partial: 'reservations/side' %>
+
+      <section id="checkoutForm" class="step_2 step block">
+        <%= form_for(@cart_form, url: [:reservation, :checkout]) do |f| %>
+          <h5 class="block_heading">Confirm Your Reservation</h5>
+          <section class="explanation">
+            <div class="row">
+              <div class="col-sm-12">
+                <h4 class="order_to_lock_in_rate">
+                  Enter Your Payment information below
+                </h4>
+                <p>Safe money transfer with your bank acount. Visa, Master, Discover, Amex, JCB.</p>
+              </div>
+            </div>
+          </section>
+          <section id="reservationForm" class="general_client_info">
+            <div class="row">
+              <div class="col-sm-6">
+                <%= fields_for(:payment, @cart_form.payment) do |payment| %>
+                <%= payment.text_field :card_holder_name, placeholder: "Name", class: "form-control" %>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <%= payment.text_field :card_number, placeholder: "Number", class: "form-control" %>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= payment.text_field :postal_code, placeholder: "Billing Postal Code", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <%= payment.select :expire_month, card_month_options, { include_blank: 'Select Month' }, { class: "form-control" } %>
+                  </div>
+                  <div class="col-sm-3">
+                    <%= payment.select :expire_year, card_year_options, { include_blank: 'Select Year' }, { class: "form-control" } %>
+                  </div>
+                  <div class="col-sm-3">
+                    <%= payment.text_field :cvv2, placeholder: "CVV", class: "form-control" %>
+                  </div>
+                </div>
+                <% end %>
+                <%= f.text_field :coupon_code, placeholder: "Coupon Code", class: "form-control" %>
+
+                <%= f.submit "Continue", class: 'button red' %>
+              </div>
+              <div class="col-sm-6">
+                <table>
+                  <tbody>
+                    <% @cart.assessments.each do |assessment| %>
+                    <tr>
+                      <th><%= assessment.description %></th>
+                      <td><%= number_to_currency(assessment.total) %></td>
+                    <tr>
+                    <% end %>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Total</th>
+                      <td><%= number_to_currency(@cart.total_due.amount) %></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </section>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</main>

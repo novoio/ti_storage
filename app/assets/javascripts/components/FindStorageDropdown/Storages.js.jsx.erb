@@ -1,0 +1,20 @@
+const Storages = React.createClass({
+  propTypes: {
+    storages: React.PropTypes.array.isRequired,
+  },
+
+  render() {
+    const pin_src = "<%= url_to_image('_common/location_pin_grey.svg') %>";
+    const car_src = "<%= url_to_image('_common/icon-truck.svg') %>";
+
+    const storages = this.props.storages.map((storage, index) => {
+      return <Storage key={index} storage={storage} src={pin_src}/>
+    });
+
+    return(
+      <div className="locations">
+        {storages}
+      </div>
+    )
+  }
+});

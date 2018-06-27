@@ -1,0 +1,47 @@
+header.mobile{
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo{ width: 50%; }
+  .burger{ width: 50%; }
+
+  .burger{
+    text-align: right;
+    cursor: pointer;
+  }
+  #mobile_collapsing_menu{
+    .modal-dialog{ 
+      width: 300px;
+      float: right;
+    }
+    .modal-content{
+      background: #1c3a9a;
+      padding: 15px;
+      .close{
+        opacity: 0.8;
+        &:hover{ opacity: 1; }
+      }
+
+      nav{
+        text-align: left;
+        .white{
+          a{
+            display: block;
+            border-bottom: solid 1px white;
+            padding-bottom: 10px; padding-top: 12px;
+            color: white;
+            font-size: 21px;
+            font-weight: bold;
+          }
+        }
+        a.phone{
+          display: block;
+          margin-top: 15px;
+          font-size: 25px;
+          color: #6fa8ff;
+        }
+      }
+    }
+  }
+}

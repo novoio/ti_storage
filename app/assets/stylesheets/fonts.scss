@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// @font-face {
+//   font-family: 'AppleChancery';
+//   src: font-url('AppleChancery');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+body{ font-family: 'PT Sans', sans-serif; }
+.heading_font{ 
+  font-family: 'Roboto', sans-serif;
+  a{ font-family: 'Roboto', sans-serif; }
+}
+
+h1, h2, h3, h4, h5, h6{
+  @extend .heading_font;
+}

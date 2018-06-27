@@ -1,0 +1,124 @@
+<main id="home_page">
+
+  <section class="find_storage">
+    <div class="blue_strip top"></div>
+
+    <!-- background -->
+    <div class="slider">
+      <div class='slide_1'></div>
+      <div class='slide_2'></div>
+      <div class='slide_3'></div>
+    </div>
+    <!-- /background -->
+
+    <div class="find_storage_rectangle">
+      <h4>Find Storage in Your Area</h4>
+      <%= react_component('FindStorageDropdown', { storages: @all_storages })%>
+    </div>
+
+    <div class="blue_strip"></div>
+  </section>
+
+  <div class="container-fluid hidden-sm-up" style="margin-top: 30px;">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= image_tag '_common/ads/amazon_rectangular.png', class: 'img-fluid' %>
+      </div>
+    </div>
+  </div>
+
+  <section class="featured_specials hidden-xs-down">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 hidden-md-down special featured_locations">
+          <h4 class="header">Featured Locations</h4>
+          <%= render partial: 'static_pages/in_home/carousel' %>
+        </div>
+
+        <a href="<%= search_path %>" class="col-lg-4 col-sm-6 special promotion">
+          <%= image_tag '_common/ads/amazon.png'%>
+        </a>
+
+        <div class="col-lg-4 col-sm-6 special in_the_news hidden-xs-down">
+          <h4 class="header">In The News</h4>
+          <%= link_to(image_tag('static_pages/home/blog/tips.jpg'), 'http://ti-storage-blog.herokuapp.com/tips-moving-in-cold-weather/') %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sign_up_for_emails hidden-xs-down">
+    <div class="container-fluid">
+      <h3>SIGN UP FOR EMAIL DISCOUNTS</h3>
+      <a class="button red" data-toggle="modal" data-target="#sign_up_for_emails_modal">Sign Up</a>
+    </div>
+  </section>
+
+  <%= render(partial: 'subscriptions/new') %>
+
+  <section class="ti_storage_benefits hidden-xs-down">
+    <div class="container-fluid">
+      <h4 class="heading">Treasure Island Storage Benefits</h4>
+      <div class="row">
+        <div class="col-lg-2 col-sm-4 col-xs-6 offset-lg-1 benefit">
+          <%= image_tag 'static_pages/home/benefits/promotions.svg' %>
+          <div class="name">Promotions & Specials</div>
+          <p class="popover">
+            Find the best deal when renting a unit with Treasure Island Storage.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-sm-4 col-xs-6 benefit">
+          <%= image_tag 'static_pages/home/benefits/moving-services.svg' %>
+          <div class="name">Free Moving Services</div>
+          <p class="popover">
+            There are 2 options for moving, Treasure Island Storage offers free use of our corporate van, or a 2-hour professional moving service.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-sm-4 col-xs-6 benefit">
+          <%= image_tag 'static_pages/home/benefits/express-check.svg' %>
+          <div class="name">Express Check-In</div>
+          <p class="popover">
+            Save time by renting a storage unit online, you are able to pick a space at the best rate by using your device. Then come into the office to sign the paper and move right in.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-sm-6 col-xs-6 benefit">
+          <%= image_tag 'static_pages/home/benefits/variety-of.svg' %>
+          <div class="name">Variety of Unit Sizes</div>
+          <p class="popover">
+            Treasure Island Storage has a variety of units that range from a small closet size to custom warehouse spaces for commercial purposes
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-sm-6 benefit">
+          <%= image_tag 'static_pages/home/benefits/climate.svg' %>
+          <div class="name">Climate Control</div>
+          <p class="popover">
+            Store in a temperature controlled environment to preserve and protect precious items kept in storage
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ti_family_of_businesses hidden-xs-down">
+    <div class="container-fluid">
+      <h4 class="heading">Treasure Island Family of Businesses</h4>
+
+      <div class="businesses">
+        <%= link_to(image_tag('static_pages/home/businesses/art.png'), Rails.configuration.meta['art_storage_url'], target: '_blank') %>
+
+        <a href="<%= commercial_storage_path %>">
+          <%= image_tag 'static_pages/home/businesses/commercial.png' %>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<%= content_for :title_tag, 'Treasure Island Storage | NYC and New Jersey Self Storage' %>
+<%= content_for :meta_description_tag, 'At Treasure Island Storage we are dedicated to providing the best self storage! Visit our website to learn more about our storage solutions.' %>

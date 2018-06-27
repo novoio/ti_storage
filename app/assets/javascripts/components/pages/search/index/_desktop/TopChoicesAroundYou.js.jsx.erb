@@ -1,0 +1,17 @@
+const Search_Index_desktop_TopChoicesAroundYou = (props) => {
+  const storage = props.storage;
+  const cheapestUnits = storage.cheapest_units;
+
+  const unitEls = cheapestUnits.map((unit, index) =>
+    <Search_Index_desktop_Unit key={index} unit={unit} storage={storage}/>
+  );
+
+  return <section className="top_choices_around_you">
+    <div className="trapezoid">
+      <div className="heading heading_font">Top Choices Around You</div>
+    </div>
+    <div className="units">
+      {unitEls}
+    </div>
+  </section>
+}

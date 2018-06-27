@@ -1,0 +1,91 @@
+main#contact_page{
+  margin-bottom: -30px;
+  section.contact_form{
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 5px solid $vermillion_color;
+    border-bottom: 5px solid $vermillion_color;
+    section.left_image{
+      width: 50%;
+      background: url(image-path('static_pages/contact/left')) no-repeat;
+      background-size: cover;
+    }
+
+    div[data-react-class=StaticPages_Contact_ContactForm]{
+      padding: 20px; padding-top: 60px;
+      width: 50%;
+      background: $cobalt_color;
+      color: white;
+      fieldset{
+        max-width: 400px;
+        margin: 0 auto;
+        .error{
+          color: #fd9a99; // bright red
+        }
+      }
+      fieldset.common{
+        div.input_and_error{
+          margin-bottom: 20px;
+          input{
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            padding: 5px;
+          }
+        }
+      }
+      fieldset.is_current_customer_yes,
+      fieldset.is_current_customer_no{
+        .question{
+          label{ width: 100%; }
+          select{ width: 100%; }
+        }
+
+        label.message{
+          margin-top: 20px;
+          width: 100%;
+          textarea{
+            width: 100%;
+            margin-top: 7px;
+          }
+        }
+      }
+      fieldset.send{
+        padding-bottom: 20px;
+        margin-top: 20px;
+        a.button{
+          color: white;
+          background: $vermillion_color;
+          border: none;
+          width: 74px; // so that it doesn't shrink when .sending
+
+          &.disabled{
+            background: black;
+            opacity: 0.3;
+            cursor: default;
+          }
+          &.active{}
+          &.sending{
+            cursor: default;
+            font-size: 20px;
+          }
+        }
+        div.required{ font-style: oblique; }
+      }
+    }
+  }
+}
+
+
+// responsive
+main#contact_page{
+  @media (max-width: $md){
+    section.contact_form{
+      div[data-react-class=StaticPages_Contact_ContactForm]{ width: 100%; }
+      section.left_image{
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
+}

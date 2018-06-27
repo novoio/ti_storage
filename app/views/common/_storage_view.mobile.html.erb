@@ -1,0 +1,20 @@
+<section class="info">
+  <h5 class="title"><%= storage.title %></h5>
+  <div class="address">
+    <%= storage.address_1 %><br/>
+    <%= storage.city_state_and_zip %>
+  </div>
+  <div class="phone_number"><%= storage.phone %></div>
+  <%= image_tag '_common/ads/amazon_rectangular.png', class: 'img-mobile' %>
+</section>
+
+<section class="photo_and_links">
+  <%= image_tag storage_image_path(storage) %>
+</section>
+
+
+<section class="mobile_ad hidden-lg-up">
+
+</section>
+
+<%= link_to("View Units", storage.url, class: 'button blue') %>

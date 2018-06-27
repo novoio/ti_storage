@@ -1,0 +1,60 @@
+<% unit = current_unit %>
+<% site = unit.site %>
+<aside class="your_reservation block">
+  <h5 class="block_heading">Your Reservation</h5>
+
+  <section class="storage">
+    <div class="row">
+      <div class="col-sm-12 image">
+        <%= image_tag(storage_image_path(storage)) %>
+      </div>
+      <div class="col-sm-12 description">
+        <h5 class="section_heading">TI Storage - <%= storage.title %></h5>
+        <div class="details">
+          <%= storage.address %><br/>
+          <%= storage.area %> <%= storage.zip_code %><br/>
+          <%= storage.phone %><br/>
+          <%= storage.office_hours.join("<br/>").html_safe %>
+        </div>
+        <%= link_to('Change Location', [:locations], class: 'change_something') %>
+      </div>
+    </div>
+  </section>
+
+  <section class="unit">
+    <h5 class="section_heading">Unit:</h5>
+    <div class="size"><%= storage_unit.dimensions %></div>
+    <div class="details">
+      <%= storage_unit.features.join(", ") %>
+    </div>
+    <%= link_to('Change Unit', seo_storage_path(storage), class: "change_something") %>
+  </section>
+
+  <section class="monthly_rent">
+    <h5 class="section_heading">Monthly Rent</h5>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Online only special*</td>
+          <td></td>
+          <td><%= number_to_currency(storage_unit.rent_rate) %></td>
+        </tr>
+        <tr>
+          <td>In-Store</td>
+          <td></td>
+          <td><%= number_to_currency(storage_unit.push_rate) %></td>
+        </tr>
+        <tr>
+          <td>Protection Plan</td>
+          <td><a class="change_something">Change Plan</a></td>
+          <td>$12.99</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footnote">
+      *Subject to change.
+    </div>
+  </section>
+</aside>

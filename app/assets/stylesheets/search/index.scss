@@ -1,0 +1,166 @@
+#search_index_page{
+  .container-fluid{ padding-top: 24px; }
+  .search_field .showing_results_near{
+    color: $light-navy_color;
+    margin-bottom: 17px;
+  }
+  .content_bordering{
+    border: solid 1px #dfdfdf;
+    padding: 12px;
+  }
+
+  .unit.row{
+    padding-bottom: 24px;
+    align-items: center;
+    &:last-child{ padding-bottom: 0; }
+    .size_and_location{
+      padding-right: 0;
+      .size{
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+        padding-bottom: 3px;
+        .word{ margin-bottom: -5px; }
+      }
+      .location{
+        .pin{
+          padding-right: 5px;
+          img{ width: 13px; }
+        }
+        .address{ font-size: 15px; }
+      }
+    }
+
+    .continue{ text-align: center; padding: 0; }
+  }
+
+  $red_color: #f8332f;
+  section.top_choices_around_you{
+    .trapezoid{
+      box-sizing: content-box;
+      width: 300px;
+      height: 0;
+      border-right: 30px solid transparent;
+      border-top: 0 solid;
+      border-bottom: 41px solid $red_color;
+      .heading{
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        padding-top: 6px;
+        padding-left: 16px;
+      }
+    }
+    .units{
+      padding: 15px;
+      border: solid $red_color 5px;
+    }
+  }
+
+  section.reserve_online_today_ad{
+    margin: 20px auto;
+    max-width: 500px;
+    img{
+      float: left;
+      padding-right: 20px;
+      max-width: 77px;
+    }
+    .red{
+      font-size: 20px;
+      font-weight: bold;
+      color: $red_color;
+    }
+    .black{ font-size: 15px; }
+  }
+
+  section.detailed_locations{
+    background: #e2e6ec;
+    .detailed_location_and_units{
+      background: white;
+      border: solid 1px #dfdfdf;
+      margin-bottom: 9px;
+      .detailed_location{
+        border-bottom: solid 1px #dfdfdf;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .photo{
+          flex-basis: 230px;
+          img{ width: 100%; }
+        };
+        .storage_details{
+          padding: 0 10px;
+        }
+      }
+      .units{
+        padding: 15px;
+      }
+    }
+    .sizing_guide_preview{
+      padding-right: 10px;
+    }
+  }
+
+  .map_and_sizing_guide_preview{
+    section.map{
+      position: relative;
+      > div{ position: static; }
+      // to fix .stick_in_parent() bug that makes 
+      // pins on a map unclickable
+      &.is_stuck+div{ display: none !important; }
+    }
+  }
+}
+
+
+// ___responsive
+#search_index_page{
+  .hidden-lg-up .sizing_guide_preview{
+    margin: 20px auto;
+  }
+
+  @media (max-width: $xl){
+    section.map{
+      height: 300px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: $md){
+    .storage_details{
+      padding-left: 20px;
+    }
+
+    section.top_choices_around_you{
+      .trapezoid{
+        width: auto;
+        height: auto;
+        border-bottom: none;
+        .heading{ color: black; }
+      }
+    }
+
+    section.reserve_online_today_ad{
+      img{ max-width: 106px; }
+      margin-top: 40px; margin-bottom: 50px;
+    }
+
+    section.detailed_locations{
+      .detailed_location{
+        justify-content: space-around !important;
+      }
+    }
+  }
+
+  @media (max-width: $sm){
+    section.reserve_online_today_ad{
+      img{
+        max-width: 56px;
+        padding-right: 5px;
+        padding-bottom: 50px;
+        padding-top: 25px;
+      }
+    }
+  }
+}
+

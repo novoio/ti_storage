@@ -1,0 +1,65 @@
+<section class="storage_view hidden-md-down">
+  <div class="photos">
+    <div class="main_photo">
+      <%= image_tag(storage.image_path) %>
+    </div>
+
+    <div class="additional_photos">
+      <%= image_tag(storage.image_path.gsub(".jpg", "/1.jpg")) %>
+      <%= image_tag(storage.image_path.gsub(".jpg", "/2.jpg")) %>
+      <%= image_tag(storage.image_path.gsub(".jpg", "/3.jpg")) %>
+    </div>
+  </div>
+
+  <section class="info first">
+    <h5 class="title"><%= storage.title %></h5>
+    <div class="address">
+      <h6>Location</h6>
+      <p>
+        <%= storage.address_1 %>
+        <%= storage.city_state_and_zip %>
+      </p>
+    </div>
+
+    <div class="phone_number">
+      <h6>Phone number</h6>
+      <p><%= number_to_phone(storage.phone) %></p>
+    </div>
+    <%= link_to('FIND UNITS', storage.url, class: 'button blue find_units') %>
+
+    <%= react_component('FetchableStorageRating', { placeId: storage.place_id, numberIsDisplayed: true }) %>
+    <%= link_to('Read Reviews', [storage.area.path_prefix, storage, anchor: :reviews], class: 'read_reviews') %>
+  </section>
+
+  <section class="info second">
+    <div class="office_hours">
+      <h6>Office hours</h6>
+      <p>
+        <% storage.hours['office'].each do |hours| %>
+          <%= hours %><br>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="access_hours">
+      <h6>Access hours</h6>
+      <p>
+        <% storage.hours['access'].each do |hours| %>
+          <%= hours %><br>
+        <% end %>
+      </p>
+    </div>
+
+    <a href="<%= storage.link_to_google_maps %>" target="_blank" class="get_directions">
+      GET DIRECTIONS
+    </a>
+  </section>
+
+  <section class="map">
+    <%= react_component('StorageMap', { storage: storage }) %>
+  </section>
+</section>
+
+<section class="storage_view-mobile hidden-lg-up">
+  <%= render partial: 'common/storage_view.mobile', locals: { storage: storage } %>
+</section>

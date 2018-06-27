@@ -1,0 +1,56 @@
+const Search_Index_desktop_Storage = React.createClass({
+  propTypes: {
+    storage: React.PropTypes.object.isRequired,
+  },
+
+  renderUnits() {
+    const storage = this.props.storage;
+    const cheapestUnits = storage.cheapest_units;
+    const unitEls = cheapestUnits.map((unit, index) =>
+      <Search_Index_desktop_Unit key={index} unit={unit}/>
+    );
+    return unitEls;
+  },
+
+  render() {
+    const storage = this.props.storage;
+
+    return <div className="detailed_location_and_units">
+      <div className="detailed_location">
+        <div className="photo">
+          <img src={storage.image_path}/>
+        </div>
+        <div className="storage_details">
+          <div className="miles_away">
+            <%= image_tag '_common/location_pin.svg' %>
+            <span className="how_many">
+              {googleDistanceToMiles(storage.distanceToOriginObject)} miles away
+            </span>
+          </div>
+
+          <h5 className="title">
+            {storage.title}
+          </h5>
+
+          <div className="address">
+            {storage.address_1}<br/>
+            {storage.city_state_and_zip}<br/>
+            <b className="telephone">{storage.phone}</b>
+          </div>
+
+          <a className="button red" href={storage.url}>
+            Show All Units
+          </a>
+        </div>
+
+        <div className="hidden-sm-down">
+          <SizingGuidePreview/>
+        </div>
+      </div>
+
+      <div className="units">
+        {this.renderUnits()}
+      </div>
+    </div>
+  }
+});

@@ -1,0 +1,75 @@
+@import 'bootstrap-flex';
+@import 'jquery-ui/menu';
+@import 'font-awesome';
+
+@import 'fonts';
+@import 'variables';
+
+@import 'common_classes';
+
+@import 'common/*';
+
+@import 'static_pages/*';
+@import 'static_pages/storage_solutions/*';
+@import 'locations/*';
+@import 'layouts/in_application/*';
+@import 'search/*';
+@import 'checkout/*';
+
+.container-fluid{ padding: 0 90px; }
+footer, header, #breadcrumbs{
+  .container-fluid{ padding: 0 75px; }
+}
+
+.img-mobile {
+  width: 95% !important;
+}
+
+.storage_view-mobile.hidden-lg-up {
+  padding: 5px !important;
+}
+
+.storage_view-mobile .info, .storage_view-mobile .photo_and_links {
+  width: 50% !important;
+  margin-top: 0px !important;
+}
+
+.storage_view-mobile .photo_and_links img {
+  width: 95% !important;
+}
+
+.storage_view-mobile > .info > .phone_number, .storage_view-mobile .info .address, .storage_view-mobile .info .title {
+  font-size: 50% !important;
+}
+
+.storage_view-mobile .info img {
+  margin-bottom: 0px !important;
+}
+
+@media (max-width: $lg){
+  .container-fluid {
+    padding: 0 20px;
+  }
+  footer, header, #breadcrumbs{
+    .container-fluid{ padding: 0 20px; }
+  }
+}
+
+a{
+  cursor: pointer;
+}
+
+ol, ul{
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+iframe{ border: 0; }
+
+body, a{
+  color: $black_color;
+}
+
+.modal {
+  z-index: 100000000;
+}

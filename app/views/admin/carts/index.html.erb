@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Created</th>
+      <th>Customer</th>
+      <th>Transaction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @carts.each do |cart| %>
+    <tr>
+      <td><%= link_to(cart.id, [:admin, cart]) %></td>
+      <td><%= cart.created_at %></td>
+      <td>
+        <% begin %>
+        <%= cart.account.name %> - <%= cart.account.email %>
+        <% rescue %>
+        <% end %>
+      </td>
+      <td><%= cart.payment.id rescue nil %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

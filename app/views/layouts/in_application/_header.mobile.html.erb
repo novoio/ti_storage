@@ -1,0 +1,39 @@
+<header class="mobile hidden-lg-up">
+
+  <a href="<%= root_path %>" class="logo">
+    <%= image_tag('layouts/header/logo-header.png') %>
+  </a>
+
+  <div data-toggle="modal" data-target="#mobile_collapsing_menu" class="burger">
+    <%= image_tag 'layouts/header/mobile_hamburger-menu.svg' %>
+  </div>
+
+  <div class="modal fade" id="mobile_collapsing_menu">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div data-dismiss="modal" class="close">
+            <%= image_tag 'layouts/header/mobile_button-close-mobile-nav.svg' %>
+          </div>
+
+          <nav>
+            <div class="white heading_font">
+              <a onclick="LC_API.open_chat_window();">Live Chat</a>
+              <%= link_to('Locations', locations_path) %>
+              <%= link_to('Storage Solutions', storage_solutions_path) %>
+              <%= link_to('Why Store With Us', why_store_with_us_path) %>
+              <%= link_to('My Account', '/myaccount') %>
+              <%= link_to('Contact Us', [:contact]) %>
+            </div>
+
+            <a href="tel:646-846-9449" class="phone">
+              646-846-9449
+            </a>
+          </nav>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>

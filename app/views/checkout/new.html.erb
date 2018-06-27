@@ -1,0 +1,31 @@
+<nav id="breadcrumbs" class="heading_font">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= link_to '< Back to Search', search_path %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="checkout_new_page">
+  <div class="container-fluid">
+    <%= render partial: '/checkout/in_new/step_navigation' %>
+
+    <div class="sidebar_and_steps">
+      <%= render partial: '/checkout/in_new/your_reservation' %>
+
+      <% case session[:current_step] 
+         when 1 %>
+        <%= render partial: '/checkout/in_new/step_1' %>
+      <% when 2 %>
+        <%= render partial: '/checkout/in_new/step_2' %>
+      <% when nil %>
+        <%= render partial: '/checkout/in_new/step_3' %>
+      <% end %>
+    </div>
+  </div>
+</main>
+
+<%= content_for :title_tag, 'Checkout | Rent A Storage Unit Online | TI Storage' %>
+<%= content_for :meta_description_tag, 'Book a self storage unit online. TI Storage offers affordable storage solutions throughout Ney York and New Jersey.' %>

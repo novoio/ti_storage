@@ -1,0 +1,81 @@
+section.find_storage_dropdown{
+  display: flex;
+  justify-content: space-between;
+  a.button{ width: 30%; }
+  input{
+    width: 70%;
+    margin-right: 20px;
+    border-radius: 2px;
+    background-color: white;
+    border: solid 1px #d1d1d1;
+    height: 48px;
+    padding: 15px;
+    font-size: 16px;
+  }
+  .search.button{
+    font-size: 20px;
+  }
+  .dropdown{
+    .dropdown-menu{
+      width: 494px;
+      font-size: 17px;
+      color: #212a34;
+      padding-bottom: 0;
+      .guessed_and_view_all{
+        padding: 10px;
+        border-bottom: solid 1px #d9d9d9;
+        .guessed{ display: inline-block; }
+        a.view_all{
+          color: #656565;
+          float: right;
+        }
+      }
+      .locations{
+        border-bottom: solid 1px #d9d9d9;
+        a.storage{
+          display: flex;
+          .address{ width: 70%; }
+          .comment{ width: 30%; }
+
+
+          padding: 10px;
+          &:hover{ 
+            background: rgba(213, 224, 255, 0.95);
+            cursor: pointer;
+          }
+          .address{
+            img{ 
+              width: 15px;
+              margin-right: 9px;
+            }
+          }
+          .comment{
+            text-align: right;
+            &.grey{ color: #8f8f8f; }
+            &.red{ color: #ee1715; }
+          }
+        }
+      }
+      .reserve_today{
+        padding: 10px;
+        color: #8f8f8f;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+// responsive
+
+@media (max-width: $sm){
+  section.find_storage_dropdown{
+    // making dropdown 100% width___
+    .dropdown{ position: initial; }
+    .dropdown-menu{
+      right: 0;
+      width: initial !important;
+    }
+    // ___making dropdown 100% width
+  }
+}

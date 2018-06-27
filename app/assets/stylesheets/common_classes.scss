@@ -1,0 +1,178 @@
+.color--red {
+  color: $vermillion_color;
+}
+
+.color--blue {
+  color: $cobalt_color;
+}
+
+.button{
+  display: inline-block;
+  min-height: 45px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  border: solid 1px white;
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 20px;
+  padding-top: 8px;
+
+  cursor: pointer;
+  &:hover{
+    text-decoration: none;
+    color: white;
+  }
+  &.blue{ background: linear-gradient(to bottom, #1f6aff 48%, $azul_color 52%); }
+  &.red{ background: linear-gradient(to bottom, #f8332f 49%, #e50200 53%); }
+}
+a.button{
+  // fighting with bootstrap
+  &:not([href]):not([tabindex]){
+    color: white;
+  }
+  &:focus{
+    outline: none;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+// .storage_details and .storage_preview are separate,
+// because sometimes we need .storage_details styling without the border and arrow and etc
+.storage_details{
+  .miles_away{
+    .how_many{
+      @extend .heading_font;
+      color: black;
+      font-size: 15px;
+      font-weight: bold;
+      padding-left: 5px;
+    }
+    padding-bottom: 5px;
+  }
+  .address{
+    font-size: 14px;
+    padding-bottom: 5px;
+    line-height: 16px;
+  }
+  .storage_rating{
+    font-weight: bold;
+    .number{
+      font-size: 16px;
+      color: #0076ff;
+    }
+  }
+  a.show_all_units, a.view_in_google_maps{
+    font-size: 14px;
+    color: $bright-orange_color;
+    font-weight: bold;
+  }
+}
+
+.storage_preview{
+  @extend .storage_details;
+  max-width: 402px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #99b0dd;
+  padding: 15px;
+
+  background: url(image-path('_common/arrow.svg')) no-repeat;
+  background-position: 361px 78px;
+
+  .city{
+    font-size: 16px;
+    font-weight: bold;
+    color: $cobalt_color;
+  }
+
+  .info{
+    .photo{
+      // padding-right: 0;
+      img{ width: 100%; }
+    }
+    .details{
+      padding-left: 30px;
+    }
+  }
+}
+
+// for storage units
+.unit_monthly_price{
+  .price{
+    font-weight: bold;
+    font-size: 28px;
+    font-family: Roboto;
+    display: inline-block;
+    position: relative;
+    // instead of text-dectoration, because
+    // browsers don't support text-decoration-color
+    .line_through{
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      border-bottom: 2px $vermillion_color solid;
+    }
+  }
+}
+.unit_promotion{
+  font-weight: bold;
+  .red{
+    font-size: 28px;
+    font-family: Roboto;
+    color: $vermillion_color;
+  }
+}
+
+
+.standard_page_heading{
+  font-size: 28px;
+  font-weight: normal;
+  color: $light-navy_color;
+
+  padding: 35px 0 15px 0;
+}
+
+// when we want it pretty
+.default_markup{
+  ul, ol{ padding-left: 30px; }
+  ul{ list-style-type: disc; }
+  ol{ list-style-type: decimal; }
+  a{ color: $cobalt_color; }
+}
+
+// blue_strip
+div.blue_strip{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  opacity: 0.82;
+  background-color: #4268d8;
+
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+// hide logged in photo in google maps
+.profile-photo{
+  display: none;
+}
+
+
+// responsive
+@media (max-width: $sm){
+  .storage_preview{
+    text-align: center;
+    background: none;
+    .miles_away{ padding-top: 20px; }
+    .photo{
+      max-width: 250px;
+      margin: 20px auto 0 auto;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+footer{
+  @media (max-width: $lg){
+    .about{
+      padding-top: 40px;
+    }
+    .navigation{
+      text-align: left;
+      padding-top: 40px;
+    }
+  }
+  @media (max-width: $sm){
+    .contact_us{ max-width: 257px; }
+    .live_chat{
+      text-align: left;
+      margin-top: 30px;
+    }
+  }
+}

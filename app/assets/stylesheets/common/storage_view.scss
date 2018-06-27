@@ -1,0 +1,100 @@
+section.storage_view{
+  // layout
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .info{ flex-basis: 200px; }
+  .info.first{ flex-basis: 150px; }
+
+  // prettiness
+  border-radius: 7px;
+  background-color: #f1f3f6;
+  border: solid 1px $pinkish-grey_color;
+
+  padding: 20px;
+  .photos{
+    padding-right: 20px;
+    .main_photo{
+      text-align: center;
+      img{
+        max-height: 180px;
+        width: 100%;
+        max-width: 243px;
+      }
+    }
+    .additional_photos{
+      display: flex;
+      justify-content: space-between;
+      max-width: 247px;
+      margin: 30px auto;
+      margin-bottom: 0;
+      img{
+        max-height: 50px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .info{
+    h6{
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    p{
+      font-size: 16px;
+    }
+    h5.title{
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .phone_number{ p{ margin-bottom: 4px; } }
+    a.button.blue{
+      min-height: 30px;
+      padding-top: 2px;
+      margin-top: 5px;
+    }
+    .storage_rating{
+      margin-top: 5px;
+    }
+    .details{ padding-right: 0; }
+    a.read_reviews, a.get_directions{
+      display: block;
+      color: $bright-orange_color;
+    }
+    a.read_reviews{ font-size: 16px; }
+    a.get_directions{ font-size: 17px; }
+  }
+
+  .map{
+    padding: 8px;
+    background: white;
+    flex-basis: 300px;
+
+    > div, section{
+      height: 100%;
+    }
+
+  }
+}
+
+
+// responsive
+section.storage_view{
+  @media (max-width: 1165px){
+    justify-content: space-around;
+    .map{
+      width: 100%;
+      margin-top: 20px;
+      flex-basis: inherit;
+      height: 200px;
+    }
+  }
+  @media (max-width: 772px){
+    justify-content: space-around;
+    
+  }
+  @media (max-width: 446px){
+    .info{ text-align: center; }
+  }
+}

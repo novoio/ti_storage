@@ -1,0 +1,118 @@
+<header class="desktop hidden-md-down">
+  <a href="<%= root_path %>" class="logo">
+    <%= image_tag('layouts/header/logo-header.png') %>
+  </a>
+
+  <a href="tel:646-846-9449" class="phone">
+    <%= image_tag '_common/phone.png' %>
+    <span>646-846-9449</span>
+  </a>
+
+  <nav id="primary_nav_wrap">
+    <ul>
+      <li class="menu--locations">
+        <a href="/locations">Locations</a>
+        <ul class="submenu">
+          <% all_sites_by_area.each do |area_with_sites| %>
+          <% area = area_with_sites[:area] %>
+          <li>
+            <%= link_to(area.title, area.path) %>
+            <ul class="submenu">
+              <% area_with_sites[:sites].each do |site| %>
+              <li>
+                <%= link_to(site.title, site.url) %>
+                <ul class="site--card">
+                  <li>
+                    <div class="site--card-inner">
+                      <h1><%= site.title %></h1>
+                      <div class="content">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <%= image_tag(site.image_path, class: 'img-fluid') %>
+                          </div>
+                          <div class="col-xs-6">
+                            <address>
+                              <span><%= site.address_1 %></span>
+                              <span><%= site.city_state_and_zip %></span>
+                              <span><%= number_to_phone(site.phone, area_code: true) %></span>
+                            </address>
+                            <%= link_to("View in Google Maps", site.link_to_google_maps, class: 'view-in--link') %>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="reserve-today--wrapper">
+                            <div class="col-xs-6 reserve-today">
+                              <div class="color--red">Reserve Your Space Today</div>
+                              <div class="color--blue">646.846.9449</div>
+                            </div>
+                            <div class="col-xs-6">
+                              <%= link_to("View units", site.url,  class: "button blue") %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-xs-12 units-starting--wrapper">
+                            <div>Units starting at <%= number_to_currency(site.min_unit_price, precision: 0) %></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+      <li class="menu--solutions">
+        <a href="/storage-solutions">Storage Solutions</a>
+        <ul class="submenu">
+          <li>
+            <a href="/commercial-storage">Commercial Storage</a>
+          </li>
+          <li>
+            <a href="/household-storage">Household Storage</a>
+          </li>
+          <li>
+            <a href="/wine-storage">Wine Storage</a>
+          </li>
+          <li>
+            <a href="/boat-storage">Boat Storage</a>
+          </li>
+          <li>
+            <a href="/car-storage">Car Storage</a>
+          </li>
+          <li>
+            <%= link_to('Art Storage', Rails.configuration.meta['art_storage_url'], target: '_blank') %>
+          </li>
+        </ul>
+      </li>
+      <li class="menu--why">
+        <a href=<%= why_store_with_us_path %>>Why Store With Us?</a>
+        <ul class="submenu">
+          <li>
+            <a href="/faq">FAQ</a>
+          </li>
+          <li>
+            <a href="/moving-services">Moving Services</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- https://docs.livechatinc.com/js-api/#open-the-chat-window -->
+  <div class="live_chat" onclick="LC_API.open_chat_window();">
+    <%= image_tag '_common/live-chat-icn_red.svg' %>
+    <span>Live Chat</span>
+  </div>
+
+  <a href="https://estore.centershift.com/account/login.aspx?accountID=6d096698-a9d3-4fc8-92bc-aea7c1c1df74" class="my_account button">My Account</a>
+</header>
+
+<%= render(partial: 'layouts/in_application/header.mobile') %>

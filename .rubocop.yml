@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - 'why/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'db/seeds.rb'
+    - 'db/seeds/*'
+    - 'vendor/**/*'
+    - 'app/controllers/checkout_controller.rb'
+    - 'app/models/reservation.rb'
+    - 'config/routes.rb'
+StringLiterals:
+  Enabled: false
+AlignParameters:
+  Enabled: false
+LineLength:
+  Enabled: false
+MethodLength:
+  Enabled: false
+BlockLength:
+  Enabled: false
+ClassLength:
+  Enabled: false
+AccessorMethodName:
+  Enabled: false

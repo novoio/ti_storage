@@ -1,0 +1,24 @@
+#breadcrumbs{
+  font-size: 18px;
+  color: white;
+  a{ color: #6fa8ff; }
+
+  background: $cobalt_color;
+
+  padding: 11px 0;
+
+  .breadcrumbs-inner{
+    margin-left: 60px;
+  }
+}
+
+
+// responsive
+
+#breadcrumbs{
+  @media (max-width: 1000px){
+    .breadcrumbs-inner{
+      margin-left: 0;
+    }
+  }
+}

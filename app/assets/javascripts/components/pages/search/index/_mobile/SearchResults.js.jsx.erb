@@ -1,0 +1,89 @@
+const Search_Index_mobile_SearchResults = React.createClass({
+  propTypes: {
+    nearestStorages: React.PropTypes.array.isRequired,
+  },
+
+  componentDidMount() {
+    const mobileMapEl = $('section.mobile_map');
+    $('a[href="#map"]').one('shown.bs.tab', (e) => {
+      const map = new Map(mobileMapEl);
+      map.displayMap();
+
+      let markers = this.props.nearestStorages;
+
+      // what we were searching for
+      const origin = currentQueryString();
+      if (origin) {
+        findCoordinatesByAddress(origin)
+          .then(({ lat, lng }) => {
+            markers.push({
+              coordinates: [lat, lng],
+              title: 'Here you are!',
+              address: origin,
+              type: 'me'
+            });
+          })
+          .catch((error) => console.log(error))
+          .then(() => this.placeMarkersOnMap(map, markers))
+      } else {
+        this.placeMarkersOnMap(map, markers)
+      }
+    })
+  },
+
+  placeMarkersOnMap(map, markers) {
+    map.placeMarkersOnMap(markers, {
+      onClick: (infoWindow, storage) => {
+        infoWindow.setContent(this.renderPin(storage));
+      }
+    });
+  },
+
+  renderPin(storage) {
+    // pin of my location
+    if (storage.type == 'me'){
+      return `
+        <h5>${storage.title}</h5>
+        <p>${storage.address}<p>
+      `
+    } else {
+      return `
+        <h5>${storage.title}</h5>
+        <p>${storage.area} ${storage.address}<p>
+        <a class="button blue" href="${storage.url}">Find Units</a>
+      `
+    }
+  },
+
+  render() {
+    const storages = this.props.nearestStorages.map((storage, index) => {
+      return <Search_Index_mobile_Storage key={index} index={index} storage={storage}/>
+    })
+
+    return <div id="search_index_page_mobile">
+
+      <ul className="nav nav-tabs" role="tablist">
+        <li className="nav-item">
+          <a className="nav-link active" data-toggle="tab" href="#list" role="tab">List</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" data-toggle="tab" href="#map" role="tab">Map</a>
+        </li>
+      </ul>
+
+      <div className="tab-content">
+        <div className="tab-pane active" id="list" role="tabpanel">
+          <section className="storages">
+            {storages}
+          </section>
+        </div>
+
+        <div className="tab-pane" id="map" role="tabpanel">
+          <section className="mobile_map"></section>
+        </div>
+      </div>
+
+    </div>
+  }
+
+});

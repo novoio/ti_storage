@@ -1,0 +1,49 @@
+const StorageReviews = React.createClass({
+  propTypes: {
+    placeId: React.PropTypes.string.isRequired
+  },
+
+  getInitialState() {
+    return {
+      reviews: []
+    };
+  },
+
+  componentDidMount() {
+    this.fetchStorageReviews();
+  },
+
+  fetchStorageReviews() {
+    getPlaceDetails(
+      this.props.placeId,
+      (place) => {
+        const fiveStarReviews = place.reviews.filter((review) => review.rating === 5);
+        this.setState({ reviews: fiveStarReviews });
+      },
+      (error) => { console.log(error) }
+    )
+  },
+
+  render() {
+    const reviews = this.state.reviews.map((review, index) => {
+      return <div key={index} className="review">
+        <a className="author" target="_blank" href={review.author_url}>
+          <img className="photo" src={review.profile_photo_url}/>
+          {review.author_name}
+        </a>
+
+        <div className="time_and_rating">
+          <StorageRating rating={review.rating} numberIsDisplayed={false}/>
+          <span className="time">{review.relative_time_description}</span>
+        </div>
+
+        <div className="text">{review.text}</div>
+      </div>
+    });
+    return(
+      <section className="reviews">
+        {reviews}
+      </section>
+    );
+  }
+});

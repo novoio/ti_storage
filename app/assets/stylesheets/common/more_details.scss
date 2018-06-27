@@ -1,0 +1,35 @@
+#more_details_modal.modal .modal-content{
+  max-width: 925px;
+  background: white;
+  padding: 14px;
+}
+
+section.more_details{
+  .heading{
+    h2{
+      width: calc(100% - 41px);
+      float: left;
+      background: $light-navy_color;
+      color: white;
+      font-size: 24px;
+      padding: 10px; padding-left: 23px;
+      margin-bottom: 0;
+    }
+    .close{
+      padding: 10px; padding-right: 3px;
+      cursor: pointer;
+      opacity: 0.7;
+      &:hover{ opacity: 1; }
+      img{ max-width: 23px; }
+    }
+  }
+  .description{
+    margin-top: 20px;
+    h5{ 
+      font-size: 24px;
+    }
+    .blue_font{
+      color: blue;
+    }
+  }
+}

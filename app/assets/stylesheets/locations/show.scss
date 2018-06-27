@@ -1,0 +1,117 @@
+#locations_show_page{
+  .container-fluid{
+    max-width: 1260px;
+    padding: 0 20px;
+  }
+  section.storage_view{
+    .button.blue.find_units{ display: none; }
+    div.storage_rating{
+      margin-top: 14px;
+    }
+  }
+  section.extensive_information{
+    margin-top: 30px;
+    // tabs
+    @import 'in_show/reviews';
+    @import 'in_show/storage_units_tab.desktop';
+    @import 'in_show/storage_units_tab.mobile';
+
+    .sizing_guide_preview{ margin: 0 auto; }
+    ul.tab_navigation{
+      li.nav-item{
+        width: 20%;
+        margin-left: 0;
+        text-align: center;
+        a.nav-link{
+          font-size: 15px;
+          font-weight: bold;
+          color: #393939;
+          border-color: #eceeef #eceeef #ddd;
+          background: linear-gradient(to bottom, white, #dadada);
+          &:hover{
+            border-color: $cobalt_color; border-bottom: none;
+          }
+          &.active{
+            background: linear-gradient(to bottom, $vermillion_color, #b51210);
+            color: white;
+          }
+        }
+      }
+    }
+
+    article.tab-pane:not(#storage_units){
+      border: 1px solid #eceeef;
+    }
+
+    article#directions{
+      @extend .default_markup;
+      ol{ margin-bottom: 20px; }
+    }
+    article:not(#storage_units){
+      padding: 30px;
+    }
+
+    article#features, article#videos{
+      li{
+        display: inline-block;
+        padding: 20px;
+        margin-bottom: 20px;
+        color: white;
+        background: $cobalt_color;
+      }
+    }
+  }
+  article.descriptions{
+    margin-top: 30px;
+    margin-bottom: -30px;
+    @extend .default_markup;
+    div.description_1, div.description_2{
+      padding: 20px 90px;
+      display: flex;
+      align-items: center;
+      .text{ width: 100%; }
+    }
+    div.description_1{
+      background: rgba(247, 246, 246, 0.6);
+      img{ margin-left: 60px; }
+    }
+    div.description_2{
+      img{ margin-right: 60px; }
+    }
+  }
+}
+
+
+// responsive
+#locations_show_page{
+  section.mobile_ad{
+    text-align: center;
+    margin-top: 20px;
+    img{
+      max-width: 300px;
+      max-height: 90px;
+      width: 100%;
+    }
+  }
+
+  section.storage_view-mobile{
+    a.button{ display: none; }
+  }
+
+  @media (max-width: $lg){
+    article.descriptions{
+      img{ max-width: 250px; }
+      div.description_1, div.description_2{
+        padding-left: 20px; padding-right: 20px;
+      }
+      div.description_1 img{ margin-left: 20px; }
+      div.description_2 img{ margin-right: 20px; }
+    }
+  }
+
+  @media (max-width: $md){
+    article.descriptions{
+      img{ display: none; }
+    }
+  }
+}
